@@ -1,11 +1,19 @@
 #pragma once
+#include <vector>
+#include "Module.h"
 
 class Generator
 {
     private:
-        double wattage;
+        std::string name;
+        bool isTurnedOn;
+        std::vector<Module*> modules;
     public:
-        Generator(double wattage);
+        Generator(std::string name);
         ~Generator();
-        double getWattage() const;
+        void addModule(Module* module);
+        void printInfo();
+        void setIsTurnedOn(bool b);
+        bool getIsTurnedOn();
+        double getTotalProduction();
 };
