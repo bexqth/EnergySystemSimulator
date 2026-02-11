@@ -1,14 +1,15 @@
 #pragma once
 #include <string>
+#include "ModuleType.h"
 
 class Module
 {
     private:
-        std::string name;
+        ModuleType moduleType;
         bool isTurnedOn;
         double production;
     public:
-        Module(double production);
+        Module(ModuleType moduleType, double production);
         ~Module();
         bool getIsTurnedOn() const;
         double getProduction() const;

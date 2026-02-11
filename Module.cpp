@@ -3,7 +3,8 @@
 
 using namespace std;
 
-Module::Module(double production) : production(production)
+
+Module::Module(ModuleType moduleType, double production) : moduleType(moduleType), production(production)
 {
 }
 
@@ -29,5 +30,5 @@ void Module::setIsTurnedOn(bool b)
 void Module::printInfo()
 {
     std::string state = this->isTurnedOn ? "ON" : "OFF";
-    cout << this->name << ": " << state << ", production: " << this->production << endl;
+    cout << this->moduleType << ": " << state << ", production: " << this->production << endl;
 }
