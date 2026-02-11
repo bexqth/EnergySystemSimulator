@@ -6,7 +6,7 @@ class Generator
 {
     private:
         std::string name;
-        bool isTurnedOn;
+        bool isTurnedOn = true;
         std::vector<Module*> modules;
     public:
         Generator(std::string name);

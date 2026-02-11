@@ -16,17 +16,13 @@ void Generator::addModule(Module *module)
     this->modules.push_back(module);
 }
 
-double Generator::getWattage() const
-{
-    return this->wattage;
-}
-
 void Generator::printInfo()
 {
     std::string state = this->isTurnedOn ? "ON" : "OFF";
-    cout << this->name << " "<< this->getTotalProduction() << " " << state << endl;
+    cout << this->name << " " << std::round(this->getTotalProduction() * 100.0) / 100.0 << " " << state << endl;
     for (auto& module : this->modules)
     {
+        cout << "  - ";
         module->printInfo();
     }
     

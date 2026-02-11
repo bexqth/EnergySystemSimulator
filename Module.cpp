@@ -1,4 +1,5 @@
 #include "Module.h"
+#include "ModuleType.h"
 #include <iostream>
 
 using namespace std;
@@ -30,5 +31,5 @@ void Module::setIsTurnedOn(bool b)
 void Module::printInfo()
 {
     std::string state = this->isTurnedOn ? "ON" : "OFF";
-    cout << this->moduleType << ": " << state << ", production: " << this->production << endl;
+    cout << getModuleTypeString(this->moduleType) << " " << state << ", production: " << this->production << endl;
 }

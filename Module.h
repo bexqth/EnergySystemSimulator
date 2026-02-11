@@ -6,7 +6,7 @@ class Module
 {
     private:
         ModuleType moduleType;
-        bool isTurnedOn;
+        bool isTurnedOn = true;
         double production;
     public:
         Module(ModuleType moduleType, double production);

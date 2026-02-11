@@ -7,7 +7,11 @@
 using namespace std;
 
 int main() {
-    Generator generator;
+    Generator generator("G1");
+    generator.addModule(new Module(ModuleType::ENGINE, 30.0));
+    generator.addModule(new Module(ModuleType::TURBINE, 45.0));
+    generator.printInfo();
+    
     Battery battery;
     battery.addCell(new Cell(100.0));
     Load load(10.0);
@@ -18,8 +22,6 @@ int main() {
         cout << "Batery current energy " << battery.getEnergy() << endl;
         cout << " " << endl;
     }
-
-    battery.chargeBattery(generator.getWattage());
     
     return 0;
 }
