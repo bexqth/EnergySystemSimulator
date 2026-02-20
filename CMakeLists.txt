@@ -13,7 +13,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(sfml)
 
-file(GLOB SOURCE_FILES *.cpp)
+file(GLOB SOURCE_FILES 
+    "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/library/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/uiComponents/*.cpp"
+)
 
 add_executable(energy_system ${SOURCE_FILES})
 

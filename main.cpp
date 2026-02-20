@@ -1,14 +1,12 @@
+#include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Cell.h"
-#include "Battery.h"
-#include "Load.h"
-#include "Generator.h"
-#include "System.h"
+#include "uiComponents/ToolBox.h"
+#include "uiComponents/Workspace.h"
 
 using namespace std;
 
 int main() {
-    System system;
+    /*System system;
     Generator* g1 = new Generator("G1");
     g1->addModule(new Module(ModuleType::ENGINE, 30.0));
     g1->addModule(new Module(ModuleType::TURBINE, 45.0));
@@ -32,5 +30,29 @@ int main() {
         cout << " " << endl;
     }*/
     
+    unsigned int winWidth = 1000;
+    unsigned int winHeight = 600;
+
+    float sidebarWidth = winWidth * 0.2f;
+    float workspaceWidth = winWidth * 0.8f;
+
+    auto window = sf::RenderWindow(sf::VideoMode({winWidth, winHeight}), "Electrostatic Simulation");
+    window.setFramerateLimit(75);
+
+    ToolBox toolBox({sidebarWidth, (float)winHeight}, {0.f, 0.f});
+    Workspace workspace({workspaceWidth, (float)winHeight}, {sidebarWidth, 0.f});
+
+    while (window.isOpen()) {
+        while (const std::optional event = window.pollEvent()) {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+
+        window.clear(sf::Color::Red);
+        window.draw(toolBox);
+        window.draw(workspace);
+        window.display();
+    }
+
     return 0;
 }
