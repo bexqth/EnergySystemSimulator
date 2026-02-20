@@ -21,7 +21,7 @@ int main() {
 
     system.tick();
 
-    /*Battery battery;
+    Battery battery;
     battery.addCell(new Cell(100.0));
     Load load(10.0);
 
@@ -44,7 +44,7 @@ int main() {
     tgui::Gui gui{window};
 
     ToolBox toolBox(gui);
-    //Workspace workspace({workspaceWidth, (float)winHeight}, {sidebarWidth, 0.f});
+    Workspace workspace(gui);
 
     while (window.isOpen()) {
         while (const std::optional event = window.pollEvent()) {
@@ -55,7 +55,7 @@ int main() {
             }
         }
 
-        window.clear(sf::Color(33, 37, 43));
+        window.clear(sf::Color(40, 44, 52));
         gui.draw();
 
         window.display();
