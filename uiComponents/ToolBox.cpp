@@ -36,20 +36,24 @@ void ToolBox::setButtons()
 
     std::vector<std::string> labels = {"Gen", "Batt", "Load"};
     int startX = 10;
-    int startY = 60;
-    int buttonSize = 50;
-    int space = 10;
+    int startY = 40;
+    int width = 180;
+    int height = 40;
+    int space = 15;
 
     for (size_t i = 0; i < buttons.size(); ++i)
     {
         buttons[i]->setText(labels[i]);
-        buttons[i]->setSize(buttonSize, buttonSize);   
-        float posX = startX + (i * (buttonSize + space));
-        buttons[i]->setPosition(posX, startY);
+        buttons[i]->getRenderer()->setBackgroundColor(tgui::Color(58, 63, 69));
+        buttons[i]->getRenderer()->setTextColor(tgui::Color(228, 229, 234));
+        buttons[i]->getRenderer()->setTextSize(13);
+        buttons[i]->getRenderer()->setBackgroundColorHover(tgui::Color(60, 60, 65));
+        buttons[i]->setSize(width, height);
+        float posY = startY + (i * (height + space));
+        buttons[i]->setPosition(startX, posY);
         buttons[i]->onRightMousePress(&ToolBox::handleMouseClick, this, buttons[i]->getText());
         toolboxPanel->add(buttons[i]);
     }
-
 }
 
 void ToolBox::handleMouseClick(tgui::String buttonType)
