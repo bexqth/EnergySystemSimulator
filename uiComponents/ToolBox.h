@@ -1,11 +1,15 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include <TGUI/TGUI.hpp>
+#include <TGUI/Backend/SFML-Graphics.hpp>
 
-class ToolBox : public sf::RectangleShape
+class ToolBox
 {
     private:
+        tgui::Panel::Ptr toolboxPanel;
+        tgui::Label::Ptr titleLabel;
 
     public:
-        ToolBox(sf::Vector2f size, sf::Vector2f position);
+        ToolBox(tgui::BackendGuiSFML& gui);
+        void setToolBox(tgui::BackendGuiSFML &gui);
         ~ToolBox();
 };
