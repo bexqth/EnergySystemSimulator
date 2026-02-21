@@ -1,6 +1,6 @@
 #include "Battery.h"
 
-Battery::Battery(sf::Vector2f pos) : Component(pos, sf::Color::Green, "Battery")
+Battery::Battery(sf::Vector2f pos) : Component(pos, sf::Color::Green, "Battery", "Battery")
 {
 }
 

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Generator::Generator(std::string name, sf::Vector2f pos) : Component(pos, sf::Color::Yellow, "Generator"), name(name)
+Generator::Generator(sf::Vector2f pos) : Component(pos, sf::Color::Yellow, "Generator", "Generator")
 {
     
 }
@@ -20,7 +20,7 @@ void Generator::addModule(Module *module)
 void Generator::printInfo()
 {
     std::string state = this->isTurnedOn ? "ON" : "OFF";
-    cout << " " << this->name << " " << std::round(this->getTotalProduction() * 100.0) / 100.0 << " " << state << endl;
+    cout << " " << std::round(this->getTotalProduction() * 100.0) / 100.0 << " " << state << endl;
     for (auto& module : this->modules)
     {
         cout << "  - ";

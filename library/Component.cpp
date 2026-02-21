@@ -3,13 +3,15 @@
 
 using namespace std;
 
-Component::Component(sf::Vector2f position, sf::Color color, std::string type) : position(position), color(color), type(type)
+Component::Component(sf::Vector2f position, sf::Color color, std::string type, std::string name) : position(position), color(color), type(type), name(name)
 {
-    shape.setSize({50.f, 50.f});
-    shape.setFillColor(this->color);
-    shape.setOutlineThickness(2);
-    shape.setOutlineColor(sf::Color::White);
-    shape.setPosition(this->position);
+    if (!sharedFont.openFromFile("Roboto-Regular.ttf")) {
+        cout << "failed to load font " << endl;
+    }
+
+    this->shape.setSize({50.f, 50.f});
+    this->shape.setFillColor(color);
+    this->shape.setPosition(position);
 }
 
 Component::~Component()
@@ -20,6 +22,10 @@ Component::~Component()
 void Component::draw(sf::RenderWindow &window)
 {
     window.draw(shape);
+    sf::Text text(sharedFont, this->name, 12);
+    text.setFillColor(sf::Color::White);
+    text.setPosition({this->shape.getPosition().x, this->shape.getPosition().y - 20.f});
+    window.draw(text);
 }
 
 void Component::move(sf::RenderWindow& window)
@@ -50,4 +56,14 @@ void Component::setIsGrabbed(bool b)
 sf::RectangleShape Component::getShape()
 {
     return this->shape;
+}
+
+void Component::setName(std::string n)
+{
+    this->name = n;
+}
+
+std::string Component::getName() const
+{
+    return this->name;
 }

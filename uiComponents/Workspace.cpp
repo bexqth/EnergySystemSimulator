@@ -58,7 +58,7 @@ void Workspace::addComponent(std::string type)
     float posX = this->winWidth / 2;
     float posY = this->winHeight / 2;
     if(type == "Gen") {
-        this->components.push_back(std::make_unique<Generator>("Gen 1", sf::Vector2f(posX, posY)));
+        this->components.push_back(std::make_unique<Generator>(sf::Vector2f(posX, posY)));
     } else if(type == "Batt") {
         this->components.push_back(std::make_unique<Battery>(sf::Vector2f(posX, posY)));
     } else if(type == "Load") {
