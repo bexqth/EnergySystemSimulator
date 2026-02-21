@@ -32,6 +32,8 @@ file(GLOB SOURCE_FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/uiComponents/*.cpp"
 )
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 add_executable(energy_system ${SOURCE_FILES})
 
 target_link_libraries(
@@ -42,6 +44,7 @@ target_link_libraries(
     sfml-system 
     TGUI::TGUI
 )
+
 
 if(APPLE)
     target_link_libraries(energy_system PRIVATE "-framework Cocoa" "-framework IOKit" "-framework CoreVideo")

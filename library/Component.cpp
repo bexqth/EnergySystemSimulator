@@ -4,8 +4,8 @@
 using namespace std;
 
 Component::Component(sf::Vector2f position, sf::Color color, std::string type, std::string name) : position(position), color(color), type(type), name(name)
-{
-    if (!sharedFont.openFromFile("Roboto-Regular.ttf")) {
+{   
+    if (!sharedFont.openFromFile("assets/Roboto-Regular.ttf")) {
         cout << "failed to load font " << endl;
     }
 
