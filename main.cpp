@@ -58,6 +58,7 @@ int main() {
         }
 
         window.clear(sf::Color(40, 44, 52));
+        workspace.handleMouseMove((sf::Vector2f)sf::Mouse::getPosition(window));
         workspace.draw(window);
         gui.draw();
 

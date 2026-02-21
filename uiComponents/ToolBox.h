@@ -14,6 +14,7 @@ class ToolBox
         tgui::Button::Ptr batteryButton;
 
         Workspace* workspace;
+        
     public:
         ToolBox(tgui::BackendGuiSFML& gui, Workspace* workspace);
         void setToolBox(tgui::BackendGuiSFML &gui);

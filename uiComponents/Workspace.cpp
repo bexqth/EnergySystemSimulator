@@ -10,6 +10,7 @@ Workspace::Workspace(tgui::BackendGuiSFML &gui, unsigned int winWidth, unsigned 
     this->workspacePanel = tgui::Panel::create();
     this->setWorkspace(gui);
     this->workspacePanel->onRightMousePress(&Workspace::handleMouseClick, this);
+    this->grabbedComponent = nullptr;
 }
 
 void Workspace::setWorkspace(tgui::BackendGuiSFML &gui)
@@ -23,15 +24,37 @@ void Workspace::setWorkspace(tgui::BackendGuiSFML &gui)
 
 void Workspace::handleMouseClick(tgui::Vector2f pos)
 {
-    std::cout << pos.x << " " << pos.y << std::endl;
+    if(this->grabbedComponent != nullptr) {
+        this->grabbedComponent->setIsGrabbed(false);
+        this->grabbedComponent = nullptr;
+        cout << "Component put down" << endl;
+        return;
+
+    } else {
+        for (auto& com : this->components)
+        {
+            if(com->isClicked({pos.x + this->winWidth * 0.2f, pos.y})) {
+                this->grabbedComponent = com.get();
+                cout << "Component grabbed" << endl;
+                return;
+            }
+        }
+    }
+}
+
+void Workspace::handleMouseMove(sf::Vector2f mousePos)
+{
+    if(this->grabbedComponent != nullptr) {
+        float halfWidth = this->grabbedComponent->getShape().getSize().x / 2.0f;
+        float halfHeight = this->grabbedComponent->getShape().getSize().y / 2.0f;
+        this->grabbedComponent->setPosition({mousePos.x - halfWidth, mousePos.y - halfHeight});
+    }
 }
 
 void Workspace::addComponent(std::string type)
 {
     float posX = this->winWidth / 2;
     float posY = this->winHeight / 2;
-    std::cout << this->workspacePanel->getSize().x << " " << this->workspacePanel->getSize().y << std::endl;
-    std::cout << posX << " " << posY << std::endl;
     if(type == "Gen") {
         this->components.push_back(std::make_unique<Generator>("Gen 1", sf::Vector2f(posX, posY)));
     }
