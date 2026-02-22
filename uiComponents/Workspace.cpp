@@ -14,6 +14,8 @@ Workspace::Workspace(tgui::BackendGuiSFML &gui, unsigned int winWidth, unsigned 
     this->workspacePanel->onRightMousePress(&Workspace::handleRightMouseClick, this);
     this->workspacePanel->onMousePress(&Workspace::handleLeftMouseClick, this);
     this->grabbedComponent = nullptr;
+
+    this->infoBox.getDeleteButton()->onClick(&Workspace::deleteComponent, this);
 }
 
 void Workspace::setWorkspace(tgui::BackendGuiSFML &gui)
@@ -88,6 +90,25 @@ void Workspace::draw(sf::RenderWindow &window)
 {
     for(auto& com : this->components) {
         com->draw(window);
+    }
+}
+
+void Workspace::deleteComponent()
+{
+    Component* deletingComponent = infoBox.getSelectedComponent();
+    if(deletingComponent != nullptr) {
+        cout << "component " << deletingComponent->getName() << " deleted " << endl;
+        for(int i = 0; i < this->components.size(); i++) {
+            if(this->components[i].get() == deletingComponent) {
+                this->components.erase(this->components.begin() + i);
+                break;
+            }
+        }
+
+        this->infoBox.setSelectedComponent(nullptr);
+        this->infoBox.displayInfo();
+    } else {
+        cout << "NO COMPONENT SELECTED" << endl;
     }
 }
 

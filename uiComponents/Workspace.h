@@ -23,4 +23,6 @@ class Workspace : public sf::RectangleShape
         void handleMouseMove(sf::Vector2f mousePos);
         void addComponent(std::string type);
         void draw(sf::RenderWindow& window);
+
+        void deleteComponent();
 };

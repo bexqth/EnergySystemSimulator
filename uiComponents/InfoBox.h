@@ -30,5 +30,10 @@ public:
     ~InfoBox() = default;
     void setInfoBox(tgui::Gui& gui);
     void setSelectedComponent(Component* component);
+    Component* getSelectedComponent();
     void displayInfo();
+    void clearInfo();
+
+    tgui::Button::Ptr getDeleteButton();
+
 };

@@ -1,4 +1,5 @@
 #include "InfoBox.h"
+#include "Workspace.h"
 
 using namespace std;
 
@@ -102,14 +103,34 @@ void InfoBox::setSelectedComponent(Component* component)
     this->selectedComponent = component;
 }
 
+Component *InfoBox::getSelectedComponent()
+{
+    return this->selectedComponent;
+}
+
 void InfoBox::displayInfo()
 {
-    this->nameEdit->setText(this->selectedComponent->getName());
-    string status;
-    if(this->selectedComponent->getIsTurnedOn()) {
-        status = "ON";
+    if(this->selectedComponent != nullptr) {
+        this->nameEdit->setText(this->selectedComponent->getName());
+        string status;
+        if(this->selectedComponent->getIsTurnedOn()) {
+            status = "ON";
+        } else {
+            status = "OFF";
+        }
+        this->statusLabel->setText("Status: " + status);
     } else {
-        status = "OFF";
+        this->clearInfo();
     }
-    this->statusLabel->setText("Status: " + status);
+}
+
+void InfoBox::clearInfo()
+{
+    this->nameEdit->setText("");
+    this->statusLabel->setText("Status: Unknown");
+}
+
+tgui::Button::Ptr InfoBox::getDeleteButton()
+{
+    return this->deleteButton;
 }
