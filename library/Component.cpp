@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Component::Component(sf::Vector2f position, sf::Color color, std::string type, std::string name) : position(position), color(color), type(type), name(name)
+Component::Component(sf::Vector2f position, sf::Color color, std::string type, std::string name, int coreValue) : position(position), color(color), type(type), name(name), coreValue(coreValue)
 {   
     if (!sharedFont.openFromFile("assets/Roboto-Regular.ttf")) {
         cout << "failed to load font " << endl;
@@ -22,10 +22,22 @@ Component::~Component()
 void Component::draw(sf::RenderWindow &window)
 {
     window.draw(shape);
-    sf::Text text(sharedFont, this->name, 12);
-    text.setFillColor(sf::Color::White);
-    text.setPosition({this->shape.getPosition().x, this->shape.getPosition().y - 20.f});
-    window.draw(text);
+    sf::Text nameText(sharedFont, this->name, 12);
+    nameText.setFillColor(sf::Color::White);
+    nameText.setPosition({this->shape.getPosition().x, this->shape.getPosition().y - 20.f});
+    window.draw(nameText);
+
+    string textString;
+    if(this->type == "Generator" || this->type == "Load") {
+        textString = to_string(this->coreValue) + " kW";
+    } else if(this->type == "Battery") {
+        textString = to_string(this->coreValue) + " %";
+    }
+
+    sf::Text coreValueText(sharedFont, textString, 12);
+    coreValueText.setFillColor(sf::Color::White);
+    coreValueText.setPosition({this->shape.getPosition().x, this->shape.getPosition().y + 55.f});
+    window.draw(coreValueText);
 }
 
 void Component::move(sf::RenderWindow& window)

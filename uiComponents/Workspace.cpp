@@ -62,7 +62,7 @@ void Workspace::addComponent(std::string type)
     } else if(type == "Batt") {
         this->components.push_back(std::make_unique<Battery>(sf::Vector2f(posX, posY)));
     } else if(type == "Load") {
-        this->components.push_back(std::make_unique<Load>(15.5, sf::Vector2f(posX, posY)));
+        this->components.push_back(std::make_unique<Load>(sf::Vector2f(posX, posY)));
     }
 }
 

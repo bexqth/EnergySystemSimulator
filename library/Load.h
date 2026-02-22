@@ -7,7 +7,7 @@ class Load : public Component
     private:
         double consumption;
     public:
-        Load(double consumption, sf::Vector2f pos);
+        Load(sf::Vector2f pos);
         ~Load();
         double getConsumption() const;
 };

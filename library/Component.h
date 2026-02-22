@@ -10,6 +10,7 @@ private:
     sf::Vector2f position;
     std::string type;
     bool isGrabbed;
+    int coreValue;
 
     std::string name;
     sf::Font sharedFont; 
@@ -17,7 +18,7 @@ private:
     //sf::Text label;
 
 public:
-    Component(sf::Vector2f pos, sf::Color color, std::string type, std::string name);
+    Component(sf::Vector2f pos, sf::Color color, std::string type, std::string name, int coreValue);
     virtual ~Component();
     void draw(sf::RenderWindow& window);
     void move(sf::RenderWindow& window);

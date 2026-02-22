@@ -3,9 +3,8 @@
 
 using namespace std;
 
-Generator::Generator(sf::Vector2f pos) : Component(pos, sf::Color::Yellow, "Generator", "Generator")
+Generator::Generator(sf::Vector2f pos) : Component(pos, sf::Color::Yellow, "Generator", "Generator", 50)
 {
-    
 }
 
 Generator::~Generator()
