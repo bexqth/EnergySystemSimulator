@@ -10,10 +10,10 @@ Component::Component(sf::Vector2f position, sf::Color color, std::string type, s
             fontLoaded = true;
         }
     }
-
-    this->shape.setSize({50.f, 50.f});
-    this->shape.setFillColor(color);
-    this->shape.setPosition(position);
+    
+    //this->shape.setSize({50.f, 50.f});
+    //this->shape.setFillColor(color);
+    //this->shape.setPosition(position);
 }
 
 Component::~Component()
@@ -22,6 +22,14 @@ Component::~Component()
 }
 
 void Component::draw(sf::RenderWindow &window)
+{
+}
+
+void Component::setDesign()
+{
+}
+
+/*void Component::draw(sf::RenderWindow &window)
 {
     window.draw(shape);
     sf::Text nameText(sharedFont, this->name, 12);
@@ -40,7 +48,9 @@ void Component::draw(sf::RenderWindow &window)
     coreValueText.setFillColor(sf::Color::White);
     coreValueText.setPosition({this->shape.getPosition().x, this->shape.getPosition().y + 55.f});
     window.draw(coreValueText);
-}
+}*/
+
+
 
 void Component::move(sf::RenderWindow& window)
 {
@@ -49,7 +59,8 @@ void Component::move(sf::RenderWindow& window)
 
 bool Component::isRightClicked(sf::Vector2f mousePosition)
 {
-    if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->shape.getSize().x && mousePosition.y < this->position.y + this->shape.getSize().y) {
+    //if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->shape.getSize().x && mousePosition.y < this->position.y + this->shape.getSize().y) {
+    if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->size.x && mousePosition.y < this->position.y + this->size.y) {
         this->isGrabbed = (!this->isGrabbed);
         cout << "is grabbed: " << this->isGrabbed << endl;
         return true;
@@ -59,7 +70,8 @@ bool Component::isRightClicked(sf::Vector2f mousePosition)
 
 Component *Component::isLeftClicked(sf::Vector2f mousePosition)
 {
-    if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->shape.getSize().x && mousePosition.y < this->position.y + this->shape.getSize().y) {
+    //if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->shape.getSize().x && mousePosition.y < this->position.y + this->shape.getSize().y) {
+    if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->size.x && mousePosition.y < this->position.y + this->size.y) {
         return this;
     }
     return nullptr;
@@ -67,7 +79,8 @@ Component *Component::isLeftClicked(sf::Vector2f mousePosition)
 
 bool Component::isClicked(sf::Vector2f mousePosition)
 {
-    if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->shape.getSize().x && mousePosition.y < this->position.y + this->shape.getSize().y) {
+    //if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->shape.getSize().x && mousePosition.y < this->position.y + this->shape.getSize().y) {
+    if(mousePosition.x > this->position.x && mousePosition.y > this->position.y && mousePosition.x < this->position.x + this->size.x && mousePosition.y < this->position.y + this->size.y) {
         return true;
     }
     return false;
@@ -75,7 +88,7 @@ bool Component::isClicked(sf::Vector2f mousePosition)
 
 void Component::setPosition(sf::Vector2f pos) {
     this->position = pos;
-    this->shape.setPosition(pos);
+    //this->shape.setPosition(pos);
 }
 
 void Component::setIsGrabbed(bool b)
@@ -90,7 +103,7 @@ bool Component::getIsGrapped() const
 
 sf::RectangleShape Component::getShape()
 {
-    return this->shape;
+    //return this->shape;
 }
 
 void Component::setName(std::string n)

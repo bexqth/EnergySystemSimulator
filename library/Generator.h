@@ -8,6 +8,11 @@ class Generator : public Component
     private:
         bool isTurnedOn = true;
         std::vector<Module*> modules;
+
+        sf::CircleShape glowCircle;
+        sf::CircleShape mainCircle;
+        sf::RectangleShape turbineRec;
+
     public:
         Generator(sf::Vector2f pos);
         ~Generator();
@@ -16,4 +21,7 @@ class Generator : public Component
         void setIsTurnedOn(bool b);
         bool getIsTurnedOn();
         double getTotalProduction();
+
+        void draw(sf::RenderWindow &window) override; 
+        void setDesign() override;
 };
