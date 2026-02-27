@@ -13,3 +13,11 @@ double Load::getConsumption() const
 {
     return this->consumption;
 }
+
+void Load::draw(sf::RenderWindow &window)
+{
+}
+
+void Load::setDesign()
+{
+}

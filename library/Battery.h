@@ -16,4 +16,7 @@ class Battery : public Component
         void dischargeBattery(double amount);
         double getCapacity();
         double getEnergy();
+
+        void draw(sf::RenderWindow &window) override; 
+        void setDesign() override;
 };

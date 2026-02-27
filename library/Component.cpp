@@ -31,10 +31,9 @@ void Component::setDesign()
 
 /*void Component::draw(sf::RenderWindow &window)
 {
-    window.draw(shape);
     sf::Text nameText(sharedFont, this->name, 12);
     nameText.setFillColor(sf::Color::White);
-    nameText.setPosition({this->shape.getPosition().x, this->shape.getPosition().y - 20.f});
+    nameText.setPosition({this->position.x, this->position.y - 20.f});
     window.draw(nameText);
 
     string textString;
@@ -46,7 +45,7 @@ void Component::setDesign()
 
     sf::Text coreValueText(sharedFont, textString, 12);
     coreValueText.setFillColor(sf::Color::White);
-    coreValueText.setPosition({this->shape.getPosition().x, this->shape.getPosition().y + 55.f});
+    coreValueText.setPosition({this->position.x, this->position.y + 55.f});
     window.draw(coreValueText);
 }*/
 

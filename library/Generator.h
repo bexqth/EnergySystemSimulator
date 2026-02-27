@@ -12,6 +12,7 @@ class Generator : public Component
         sf::CircleShape glowCircle;
         sf::CircleShape mainCircle;
         sf::RectangleShape turbineRec;
+        sf::RectangleShape turbineRecCol;
 
     public:
         Generator(sf::Vector2f pos);

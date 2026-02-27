@@ -58,3 +58,11 @@ double Battery::getEnergy()
     }
     return en;
 }
+
+void Battery::draw(sf::RenderWindow &window)
+{
+}
+
+void Battery::setDesign()
+{
+}

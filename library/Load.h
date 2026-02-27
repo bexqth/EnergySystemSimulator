@@ -10,5 +10,8 @@ class Load : public Component
         Load(sf::Vector2f pos);
         ~Load();
         double getConsumption() const;
+
+        void draw(sf::RenderWindow &window) override; 
+        void setDesign() override;
 };
 

@@ -18,9 +18,24 @@ void Generator::addModule(Module *module)
 }
 
 void Generator::draw(sf::RenderWindow &window) {
+
     window.draw(this->glowCircle);
     window.draw(this->mainCircle);
     window.draw(this->turbineRec);
+    window.draw(this->turbineRecCol);
+
+    sf::Text nameText(sharedFont, this->name, 12);
+    nameText.setFillColor(sf::Color::White);
+    nameText.setPosition({this->position.x - mainCircle.getRadius(), this->position.y - 25.f - mainCircle.getRadius()});
+    window.draw(nameText);
+
+    string textString = to_string(this->coreValue) + " kW";
+    sf::Text coreValueText(sharedFont, textString, 12);
+    coreValueText.setFillColor(sf::Color::White);
+    coreValueText.setPosition({this->position.x - mainCircle.getRadius() + 10.f, this->position.y + 10.f + mainCircle.getRadius()});
+    window.draw(coreValueText);
+
+    //Component::draw(window);
 }
 
 void Generator::setDesign() {
@@ -29,7 +44,6 @@ void Generator::setDesign() {
     this->mainCircle.setFillColor(sf::Color(40, 169, 215));
     this->mainCircle.setPosition(this->position);
     this->mainCircle.setOrigin({this->mainCircle.getRadius(), this->mainCircle.getRadius()});
-    //this->mainCircle.setOrigin({this->mainCircle.getRadius(), this->mainCircle.getRadius()});
     
     this->glowCircle.setRadius(32.f);
     this->glowCircle.setFillColor(sf::Color(this->mainCircle.getFillColor().r,this->mainCircle.getFillColor().g, this->mainCircle.getFillColor().b, 50));
@@ -37,11 +51,16 @@ void Generator::setDesign() {
     this->glowCircle.setPosition({this->position.x, this->position.y});
     
     this->turbineRec.setSize({25.f, 5.f});
-    
     this->turbineRec.setOrigin({12.5f, 2.5f});
     this->turbineRec.setPosition(this->position);
     this->turbineRec.setFillColor(sf::Color(243, 242, 241));
-    
+
+    this->turbineRecCol.setSize({25.f, 5.f});
+    this->turbineRecCol.setOrigin({12.5f, 2.5f});
+    this->turbineRecCol.setPosition(this->position);
+    this->turbineRecCol.setFillColor(sf::Color(243, 242, 241));
+    this->turbineRecCol.setRotation(sf::degrees(90.f));
+
     this->size = {64.f, 64.f};
 }
 
